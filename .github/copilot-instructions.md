@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-**CommonLift** (also referred to as CallThing.app) is a lightweight web platform for **coordinating and tracking outreach to elected officials**. It helps organizations ensure their members make consistent, distributed contact with decision-makers, turning individual calls and emails into visible, collective impact.
+**CommonLift** is a lightweight web platform for **coordinating and tracking outreach to elected officials**. It helps organizations ensure their members make consistent, distributed contact with decision-makers, turning individual calls and emails into visible, collective impact.
 
 ### Key Features (MVP Scope)
 - **Campaign creation**: Organizers define issues, set member goals, add scripts/talking points
@@ -25,7 +25,6 @@
 ### Prerequisites
 - **Node.js**: 20.19.5+ (verified working)
 - **npm**: 10.8.2+ (verified working)
-- **Network access**: Required for Google Fonts (build fails without it, dev works)
 
 ### Essential Commands (Always Follow This Order)
 
@@ -41,7 +40,6 @@
    - Uses Turbopack for fast compilation
    - Serves on http://localhost:3000
    - Hot reload enabled
-   - **Always works** even with network issues
 
 3. **Linting** (run before commits):
    ```bash
@@ -54,9 +52,7 @@
    ```bash
    npm run build
    ```
-   - Uses Turbopack for optimized builds  
-   - **Known Issue**: Fails without internet (Google Fonts dependency)
-   - **Workaround**: Development works fine offline
+   - Uses Turbopack for optimized builds
 
 5. **Production Server**:
    ```bash
@@ -66,10 +62,8 @@
 
 ### Common Issues & Workarounds
 
-- **Build fails with Google Fonts errors**: Network connectivity issue. Development server (`npm run dev`) works fine without internet
 - **Timing**: `npm install` can take 15-30 seconds, builds take 5-10 seconds
 - **Never skip**: Always run `npm install` after pulling changes
-- **Font warnings**: Geist font fetch failures are non-blocking in development
 
 ## Project Layout & Architecture
 
