@@ -22,6 +22,12 @@
 - **Framework**: Next.js 15.5.3 with React 19.1.0
 - **Target Runtime**: Node.js 20+ in browser and server environments
 
+## Code Guidelines
+
+- All code must transpile cleanly using Typescript strict mode
+- Key code styles: prefer single quotes, no semicolons, arrow functions instead of `function` keyword
+- Include TSDoc for all functions, types, classes, etc.
+
 ## Build & Validation Instructions
 
 ### Prerequisites
