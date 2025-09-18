@@ -17,9 +17,9 @@ This project uses [Vitest](https://vitest.dev/) for testing. The test setup incl
   - Module tests
   - Located alongside their source files with the `.test.ts` or `.test.tsx` extension
 - `test/common/`
-  - Shared test utilities
-  - Contains utilities used across tests of different types (unit, end-to-end, etc.)
-  - Can be imported via `'@test/common'`, or `'@test/common/test-module'`
+  - Shared test utilities and configuration
+  - Contains utilities used across different test types (unit, end-to-end, etc.)
+  - Can be imported via `'@test/common'` or `'@test/common/test-module'`
 - `test/vitest/`
   - Unit test utilities and helpers
   - Contains files used only for vitest unit tests
