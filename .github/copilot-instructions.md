@@ -63,12 +63,15 @@
 4. **Testing** (recommended development workflow):
 
    ```bash
-   npm test          # Run tests in watch mode
-   npm run test:run  # Run tests once
+   # Unit/Component Tests
+   npm test          # Run tests once
+
+   # End-to-End Tests
+   npm run test:e2e  # Run e2e tests (requires dev server)
    ```
 
-   - Uses Vitest with React Testing Library
-   - Tests run automatically on file changes in watch mode
+   - Uses Vitest with React Testing Library for unit/component tests
+   - Uses Playwright for end-to-end testing
 
 5. **Production Build**:
 
@@ -88,12 +91,14 @@
 
 #### Test File Placement
 
-- **Module tests**: Place `.test.ts` or `.test.tsx` files alongside the source code they test
+- **Unit tests**: Place `.test.ts` or `.test.tsx` files alongside the source code they test
+- **End-to-end tests**: Place `.spec.ts` files in `test/e2e/` directory
 - **Shared test utilities**: Place in `test/common/` directory
 
 #### Test Environment
 
-- **Framework**: Vitest with jsdom environment
+- **Unit/Component**: Vitest with jsdom environment
+- **End-to-End**: Playwright with Chrome, Firefox, Safari
 - **Testing utilities**: React Testing Library with Jest DOM matchers
 - **Import aliases**: Use `@/` for source code, `@test/` for test utilities
 - **Global setup**: Configured in `test/common/setup.ts`
@@ -121,6 +126,7 @@
 │       └── page.tsx        # Home page component
 ├── test/                   # Test utilities and configuration
 │   ├── common/             # Shared test utilities used by all test types
+│   ├── e2e/                # End-to-end tests (Playwright)
 │   └── vitest/             # Vitest-specific test files
 │       └── setup.ts        # Global vitest configuration
 ├── eslint.config.mjs      # ESLint configuration
@@ -169,13 +175,20 @@
 ### Available Scripts
 
 ```bash
-npm run dev        # Development server with Turbopack
-npm run build      # Production build with Turbopack
-npm run start      # Production server
-npm run lint       # ESLint validation
-npm test           # Run tests once
-npm run test:run   # Run tests once (explicit)
-npm run test:watch # Run tests in watch mode
+npm run dev          # Development server with Turbopack
+npm run build        # Production build with Turbopack
+npm run start        # Production server
+npm run lint         # ESLint validation
+
+# Unit/Component Testing
+npm test             # Run unit tests once
+npm run test:run     # Run unit tests once (explicit)
+npm run test:watch   # Run unit tests in watch mode
+
+# End-to-End Testing
+npm run test:e2e     # Run e2e tests
+npm run test:e2e:ui  # Run e2e tests with UI mode
+npm run test:e2e:debug # Run e2e tests in debug mode
 ```
 
 ### Documentation Inventory
