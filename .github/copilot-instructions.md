@@ -5,8 +5,9 @@
 **CommonLift** is a lightweight web platform for **coordinating and tracking outreach to elected officials**. It helps organizations ensure their members make consistent, distributed contact with decision-makers, turning individual calls and emails into visible, collective impact.
 
 ### Key Features (MVP Scope)
+
 - **Campaign creation**: Organizers define issues, set member goals, add scripts/talking points
-- **Target officials**: Database with filters (office, jurisdiction, party, etc.)  
+- **Target officials**: Database with filters (office, jurisdiction, party, etc.)
 - **Public join links**: Easy volunteer onboarding without private invites
 - **Assignment engine**: Volunteers get "next best official" based on location/logic
 - **Call logging**: Record actions with notes and categorized responses
@@ -14,6 +15,7 @@
 - **Integrity checks**: Email verification, CAPTCHA, rate limits
 
 ### Repository Stats
+
 - **Size**: Small, early-stage (~15 source files)
 - **Type**: Full-stack web application
 - **Languages**: TypeScript (95%), CSS (3%), JavaScript (2%)
@@ -23,6 +25,7 @@
 ## Build & Validation Instructions
 
 ### Prerequisites
+
 - **Node.js**: 20.19.5+ (verified working)
 - **npm**: 10.8.2+ (verified working)
 
@@ -32,33 +35,62 @@
    ```bash
    npm install
    ```
-   
 2. **Development Server** (primary development workflow):
+
    ```bash
    npm run dev
    ```
+
    - Uses Turbopack for fast compilation
    - Serves on http://localhost:3000
    - Hot reload enabled
 
 3. **Linting** (run before commits):
+
    ```bash
    npm run lint
    ```
+
    - Uses ESLint with Next.js TypeScript configuration
    - Zero tolerance - must pass with no errors
 
-4. **Production Build**:
+4. **Testing** (recommended development workflow):
+
+   ```bash
+   npm test          # Run tests in watch mode
+   npm run test:run  # Run tests once
+   ```
+
+   - Uses Vitest with React Testing Library
+   - Tests run automatically on file changes in watch mode
+
+5. **Production Build**:
+
    ```bash
    npm run build
    ```
+
    - Uses Turbopack for optimized builds
 
-5. **Production Server**:
+6. **Production Server**:
    ```bash
    npm start
    ```
    - Requires successful build first
+
+### Testing Guidelines
+
+#### Test File Placement
+
+- **Module tests**: Place `.test.ts` or `.test.tsx` files alongside the source code they test
+- **Shared test utilities**: Place in `test/common/` directory
+
+#### Test Environment
+
+- **Framework**: Vitest with jsdom environment
+- **Testing utilities**: React Testing Library with Jest DOM matchers
+- **Import aliases**: Use `@/` for source code, `@test/` for test utilities
+- **Global setup**: Configured in `test/common/setup.ts`
 
 ### Common Issues & Workarounds
 
@@ -68,22 +100,23 @@
 ## Project Layout & Architecture
 
 ### Directory Structure
+
 ```
 /
-├── .github/                 # GitHub configuration
+├── .github/                # GitHub configuration
 ├── .next/                  # Next.js build output (auto-generated)
 ├── docs/                   # Project documentation
-│   ├── project-overview.md # Comprehensive project description
-│   └── nextjs-readme.md    # Standard Next.js setup info
 ├── node_modules/           # Dependencies (auto-generated)
-├── public/                 # Static assets
-│   ├── *.svg              # Icons and logos
-│   └── favicon.ico        # Site icon
+├── public/                 # Static assets (images, fonts, etc.)
 ├── src/                    # Application source code
-│   └── app/               # Next.js App Router directory
-│       ├── globals.css    # Global styles with TailwindCSS
-│       ├── layout.tsx     # Root layout component
-│       └── page.tsx       # Home page component
+│   └── app/                # Next.js App Router directory
+│       ├── globals.css     # Global styles with TailwindCSS
+│       ├── layout.tsx      # Root layout component
+│       └── page.tsx        # Home page component
+├── test/                   # Test utilities and configuration
+│   ├── common/             # Shared test utilities used by all test types
+│   └── vitest/             # Vitest-specific test files
+│       └── setup.ts        # Global vitest configuration
 ├── eslint.config.mjs      # ESLint configuration
 ├── next.config.ts         # Next.js configuration
 ├── package.json           # Project dependencies and scripts
@@ -97,13 +130,13 @@
   - React 19.1.0, Next.js 15.5.3, TypeScript 5+
   - TailwindCSS 4 for styling
   - ESLint for code quality
-  
 - **tsconfig.json**: TypeScript with Next.js plugin, path aliases (`@/*`)
 - **eslint.config.mjs**: Next.js core web vitals + TypeScript rules
 - **postcss.config.mjs**: TailwindCSS PostCSS integration
 - **next.config.ts**: Empty Next.js configuration (default setup)
 
 ### Architecture
+
 - **Framework**: Next.js 15 with App Router (src/app/)
 - **Styling**: TailwindCSS 4 with custom theme variables
 - **Fonts**: Geist Sans & Mono from Google Fonts via next/font
@@ -111,13 +144,16 @@
 - **TypeScript**: Strict mode enabled with modern ES2017 target
 
 ### CI/CD & Validation
-**Current State**: No automated CI/CD workflows detected
+
+**Current State**: Basic testing setup, no automated CI/CD workflows
+
 - No GitHub Actions workflows
-- No test framework (Jest, Vitest, etc.)
+- Vitest + React Testing Library configured for unit/component testing
 - No deployment configuration
-- Manual validation relies on local `npm run lint` and `npm run build`
+- Manual validation relies on `npm run lint`, `npm test`, and `npm run build`
 
 ### Non-Obvious Dependencies
+
 - **@tailwindcss/postcss**: Required for TailwindCSS 4 processing
 - **@eslint/eslintrc**: Compatibility layer for ESLint flat config
 - **Turbopack**: Bundled with Next.js, enables `--turbopack` flag
@@ -125,20 +161,27 @@
 ## Development Process
 
 ### Available Scripts
+
 ```bash
-npm run dev    # Development server with Turbopack
-npm run build  # Production build with Turbopack  
-npm run start  # Production server
-npm run lint   # ESLint validation
+npm run dev        # Development server with Turbopack
+npm run build      # Production build with Turbopack
+npm run start      # Production server
+npm run lint       # ESLint validation
+npm test           # Run tests once
+npm run test:run   # Run tests once (explicit)
+npm run test:watch # Run tests in watch mode
 ```
 
 ### Documentation Inventory
+
 1. **README.md**: Brief project introduction (7 lines)
 2. **docs/project-overview.md**: Comprehensive feature/purpose documentation
 3. **docs/nextjs-readme.md**: Standard Next.js project setup info
-4. **This file**: Complete development onboarding guide
+4. **docs/DEVELOPER.md**: Comprehensive developer documentation
+5. **.github/copilot-instructions.md**: (_This File_) Specific instructions for AI agents
 
 ### Code Style & Standards
+
 - TypeScript strict mode enforced
 - Next.js ESLint rules with TypeScript support
 - React 19 with App Router patterns
