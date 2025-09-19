@@ -33,6 +33,8 @@ jobs:
       # setup tools and install dependencies
       - name: Setup dependencies
         uses: ./.github/actions/setup
+        with:
+          install-e2e-tools: 'false'
 
       # perform changesets release operations
       - name: Create Release Pull Request or Publish to npm
