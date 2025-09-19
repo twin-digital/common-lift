@@ -25,6 +25,7 @@
 ## Code Styling and Standards
 
 - TypeScript strict mode enforced
+- **ES modules (ESM)**: Project uses `"type": "module"` with `import`/`export` syntax throughout
 - Key code styles: prefer single quotes, no semicolons, arrow functions instead of `function` keyword
 - Include TSDoc for all functions, types, classes, etc.
 - Next.js ESLint rules with TypeScript support
@@ -106,6 +107,17 @@
 - **Testing utilities**: React Testing Library with Jest DOM matchers
 - **Import aliases**: Use `@/` for source code, `@test/` for test utilities
 - **Global setup**: Configured in `test/common/setup.ts`
+
+#### Validation Requirements
+
+When making code changes, **always validate** using the full test suite:
+
+1. **Linting**: `pnpm lint` - Must pass with no errors
+2. **Unit Tests**: `pnpm test` - All tests must pass
+3. **End-to-End Tests**: `pnpm test:e2e` - Full integration testing
+4. **Build**: `pnpm build` - Must compile successfully
+
+Run these commands iteratively during development to catch issues early.
 
 ### Common Issues & Workarounds
 
