@@ -56,3 +56,47 @@ The test environment is configured with:
 - Tests run against the actual application in browsers
 - Supports Chrome, Firefox, and Safari
 - Start your dev server before running e2e tests: `pnpm dev`
+
+## Version Management & Releases
+
+This project uses [Changesets](https://github.com/changesets/changesets) for version management and automated releases.
+
+### Creating Changes
+
+When you make changes that should be included in the next release:
+
+```bash
+# Create a changeset describing your changes
+pnpm changeset
+```
+
+This will prompt you to:
+1. Select which packages to bump (choose `common-lift`)
+2. Select the type of change:
+   - **patch** (0.0.X): Bug fixes, small improvements
+   - **minor** (0.X.0): New features, backwards compatible changes
+   - **major** (X.0.0): Breaking changes
+3. Write a brief summary of the changes
+
+### Release Process
+
+The release process is automated:
+
+1. **Development**: Create changesets for your changes during development
+2. **Version PR**: When merged to `main`, Changesets automatically creates a "Version Packages" PR
+3. **Release**: When the Version PR is merged, the new version is automatically published
+
+### Manual Commands
+
+```bash
+# Check changeset status
+pnpm changeset:status
+
+# Apply version bumps (normally automated)
+pnpm changeset:version
+
+# Publish release (normally automated)
+pnpm changeset:publish
+```
+
+For more details, see [`.changeset/README.md`](.changeset/README.md).

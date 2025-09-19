@@ -20,13 +20,17 @@
 - **Type**: Full-stack web application
 - **Languages**: TypeScript (95%), CSS (3%), JavaScript (2%)
 - **Framework**: Next.js 15.5.3 with React 19.1.0
-- **Target Runtime**: Node.js 20+ in browser and server environments
+- **Target Runtime**: Node.js 22+ in browser and server environments
 
-## Code Guidelines
+## Code Styling and Standards
 
-- All code must transpile cleanly using Typescript strict mode
+- TypeScript strict mode enforced
 - Key code styles: prefer single quotes, no semicolons, arrow functions instead of `function` keyword
 - Include TSDoc for all functions, types, classes, etc.
+- Next.js ESLint rules with TypeScript support
+- React 19 with App Router patterns
+- TailwindCSS for styling (utility-first approach)
+- Absolute imports via `@/*` path mapping
 
 ## Build & Validation Instructions
 
@@ -155,20 +159,27 @@
 - **Build Tool**: Turbopack (Next.js' Rust-based bundler)
 - **TypeScript**: Strict mode enabled with modern ES2017 target
 
-### CI/CD & Validation
-
-**Current State**: Basic testing setup, no automated CI/CD workflows
-
-- No GitHub Actions workflows
-- Vitest + React Testing Library configured for unit/component testing
-- No deployment configuration
-- Manual validation relies on `pnpm lint`, `pnpm build`, `pnpm test`, and `pnpm test:e2e`
-
 ### Non-Obvious Dependencies
 
 - **@tailwindcss/postcss**: Required for TailwindCSS 4 processing
 - **@eslint/eslintrc**: Compatibility layer for ESLint flat config
 - **Turbopack**: Bundled with Next.js, enables `--turbopack` flag
+
+## CI/CD & Validation
+
+**Current State**: Automated CI/CD workflows with testing and release management
+
+- **CI Workflow**: Runs on all branches - linting, testing, and building
+- **Release Workflow**: Automated version management and publishing via Changesets
+- Vitest + React Testing Library configured for unit/component testing
+- Playwright configured for end-to-end testing
+- Automated validation via `pnpm lint`, `pnpm build`, `pnpm test`, and `pnpm test:e2e`
+
+### Version Management
+
+- **Changesets**: Automated version management and changelog generation
+- **Release Process**: Automated via GitHub Actions when changes are merged to `main`
+- **Manual Commands**: `pnpm changeset` to create changesets for new features/fixes*. It helps organizations ensure their members make consistent, distributed contact with decision-makers, turning individual calls and emails into visible, collective impact.
 
 ## Development Process
 
@@ -189,6 +200,12 @@ pnpm test:watch   # Run unit tests in watch mode
 pnpm test:e2e     # Run e2e tests
 pnpm test:e2e:ui  # Run e2e tests with UI mode
 pnpm test:e2e:debug # Run e2e tests in debug mode
+
+# Version Management (Changesets)
+pnpm changeset    # Create a changeset for new changes
+pnpm changeset:status # Check changeset status
+pnpm changeset:version # Apply version bumps (automated)
+pnpm changeset:publish # Publish release (automated)
 ```
 
 ### Documentation Inventory
@@ -198,14 +215,7 @@ pnpm test:e2e:debug # Run e2e tests in debug mode
 3. **docs/nextjs-readme.md**: Standard Next.js project setup info
 4. **docs/DEVELOPER.md**: Comprehensive developer documentation
 5. **.github/copilot-instructions.md**: (_This File_) Specific instructions for AI agents
-
-### Code Style & Standards
-
-- TypeScript strict mode enforced
-- Next.js ESLint rules with TypeScript support
-- React 19 with App Router patterns
-- TailwindCSS for styling (utility-first approach)
-- Absolute imports via `@/*` path mapping
+6. **.changeset/README.md**: Changesets workflow and version management guide
 
 ---
 
