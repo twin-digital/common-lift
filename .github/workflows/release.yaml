@@ -46,6 +46,5 @@ jobs:
           title: 'chore: update versions'
           version: pnpm changeset:version
           publish: pnpm changeset:publish
-          setupGitUser: true
-          createGithubReleases: true
-          token: ${{ secrets.COCOBOT_GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
