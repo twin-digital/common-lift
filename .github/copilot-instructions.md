@@ -108,6 +108,17 @@
 - **Import aliases**: Use `@/` for source code, `@test/` for test utilities
 - **Global setup**: Configured in `test/common/setup.ts`
 
+#### Validation Requirements
+
+When making code changes, **always validate** using the full test suite:
+
+1. **Linting**: `pnpm lint` - Must pass with no errors
+2. **Unit Tests**: `pnpm test` - All tests must pass
+3. **End-to-End Tests**: `pnpm test:e2e` - Full integration testing
+4. **Build**: `pnpm build` - Must compile successfully
+
+Run these commands iteratively during development to catch issues early.
+
 ### Common Issues & Workarounds
 
 - **Timing**: `pnpm install` can take 15-30 seconds, builds take 5-10 seconds

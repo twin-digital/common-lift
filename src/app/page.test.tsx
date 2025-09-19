@@ -6,7 +6,7 @@ import {
   expectNextImage,
   expectUTMParameters,
 } from "@test/common";
-import Home from "./page";
+import Home from "./page.js";
 
 describe("Home Page", () => {
   beforeEach(() => {

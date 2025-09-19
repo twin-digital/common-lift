@@ -1,2 +1,2 @@
 // Re-export test utilities for easier imports
-export * from "./test-utils";
+export * from "./test-utils.js";
