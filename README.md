@@ -18,16 +18,16 @@ This project uses:
 
 ```bash
 # Install dependencies
-npm install
+pnpm install
 
 # Start development server
-npm run dev
+pnpm dev
 
 # Run tests
-npm test
+pnpm test
 
 # Build for production
-npm run build
+pnpm build
 ```
 
 For detailed development information, see [docs/DEVELOPER.md](./docs/DEVELOPER.md).

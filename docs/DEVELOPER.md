@@ -32,14 +32,14 @@ This project uses:
 
 ```bash
 # Unit/Component Tests (Vitest)
-npm test                 # Run tests once
-npm test:run             # Run tests once (explicit)
-npm run test:watch       # Run tests in watch mode
+pnpm test                 # Run tests once
+pnpm test:run             # Run tests once (explicit)
+pnpm test:watch           # Run tests in watch mode
 
 # End-to-End Tests (Playwright)
-npm run test:e2e         # Run e2e tests
-npm run test:e2e:ui      # Run e2e tests with UI mode
-npm run test:e2e:debug   # Run e2e tests in debug mode
+pnpm test:e2e             # Run e2e tests
+pnpm test:e2e:ui          # Run e2e tests with UI mode
+pnpm test:e2e:debug       # Run e2e tests in debug mode
 ```
 
 ### Writing Tests
@@ -55,4 +55,4 @@ The test environment is configured with:
 
 - Tests run against the actual application in browsers
 - Supports Chrome, Firefox, and Safari
-- Start your dev server before running e2e tests: `npm run dev`
+- Start your dev server before running e2e tests: `pnpm dev`

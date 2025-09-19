@@ -32,19 +32,19 @@
 
 ### Prerequisites
 
-- **Node.js**: 20.19.5+ (verified working)
-- **npm**: 10.8.2+ (verified working)
+- **Node.js**: 22+ (specified in .nvmrc)
+- **pnpm**: 8+ (specified in package.json engines)
 
 ### Essential Commands (Always Follow This Order)
 
 1. **Bootstrap** (required first step):
    ```bash
-   npm install
+   pnpm install
    ```
 2. **Development Server** (primary development workflow):
 
    ```bash
-   npm run dev
+   pnpm dev
    ```
 
    - Uses Turbopack for fast compilation
@@ -54,7 +54,7 @@
 3. **Linting** (run before commits):
 
    ```bash
-   npm run lint
+   pnpm lint
    ```
 
    - Uses ESLint with Next.js TypeScript configuration
@@ -64,10 +64,10 @@
 
    ```bash
    # Unit/Component Tests
-   npm test          # Run tests once
+   pnpm test          # Run tests once
 
    # End-to-End Tests
-   npm run test:e2e  # Run e2e tests (requires dev server)
+   pnpm test:e2e  # Run e2e tests (requires dev server)
    ```
 
    - Uses Vitest with React Testing Library for unit/component tests
@@ -76,14 +76,14 @@
 5. **Production Build**:
 
    ```bash
-   npm run build
+   pnpm build
    ```
 
    - Uses Turbopack for optimized builds
 
 6. **Production Server**:
    ```bash
-   npm start
+   pnpm start
    ```
    - Requires successful build first
 
@@ -105,8 +105,8 @@
 
 ### Common Issues & Workarounds
 
-- **Timing**: `npm install` can take 15-30 seconds, builds take 5-10 seconds
-- **Never skip**: Always run `npm install` after pulling changes
+- **Timing**: `pnpm install` can take 15-30 seconds, builds take 5-10 seconds
+- **Never skip**: Always run `pnpm install` after pulling changes
 
 ## Project Layout & Architecture
 
@@ -162,7 +162,7 @@
 - No GitHub Actions workflows
 - Vitest + React Testing Library configured for unit/component testing
 - No deployment configuration
-- Manual validation relies on `npm run lint`, `npm test`, and `npm run build`
+- Manual validation relies on `pnpm lint`, `pnpm build`, `pnpm test`, and `pnpm test:e2e`
 
 ### Non-Obvious Dependencies
 
@@ -175,20 +175,20 @@
 ### Available Scripts
 
 ```bash
-npm run dev          # Development server with Turbopack
-npm run build        # Production build with Turbopack
-npm run start        # Production server
-npm run lint         # ESLint validation
+pnpm dev          # Development server with Turbopack
+pnpm build        # Production build with Turbopack
+pnpm start        # Production server
+pnpm lint         # ESLint validation
 
 # Unit/Component Testing
-npm test             # Run unit tests once
-npm run test:run     # Run unit tests once (explicit)
-npm run test:watch   # Run unit tests in watch mode
+pnpm test         # Run unit tests once
+pnpm test:run     # Run unit tests once (explicit)
+pnpm test:watch   # Run unit tests in watch mode
 
 # End-to-End Testing
-npm run test:e2e     # Run e2e tests
-npm run test:e2e:ui  # Run e2e tests with UI mode
-npm run test:e2e:debug # Run e2e tests in debug mode
+pnpm test:e2e     # Run e2e tests
+pnpm test:e2e:ui  # Run e2e tests with UI mode
+pnpm test:e2e:debug # Run e2e tests in debug mode
 ```
 
 ### Documentation Inventory
