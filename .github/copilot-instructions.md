@@ -25,6 +25,7 @@
 ## Code Styling and Standards
 
 - TypeScript strict mode enforced
+- **ES modules (ESM)**: Project uses `"type": "module"` with `import`/`export` syntax throughout
 - Key code styles: prefer single quotes, no semicolons, arrow functions instead of `function` keyword
 - Include TSDoc for all functions, types, classes, etc.
 - Next.js ESLint rules with TypeScript support

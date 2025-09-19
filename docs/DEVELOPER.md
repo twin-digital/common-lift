@@ -3,6 +3,10 @@
 This guide is meant to assist developers working on the CommonLift application. For general information about the
 project, see the [full project overview](./docs/project-overview.md).
 
+## ES Modules (ESM)
+
+This project uses ES modules (ESM) as the module system. All source files use `import`/`export` syntax, and the project is configured with `"type": "module"` in package.json. This provides better compatibility with modern tools and platforms.
+
 ## Testing
 
 This project uses:
