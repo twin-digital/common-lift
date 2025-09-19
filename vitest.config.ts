@@ -13,6 +13,7 @@ export default defineConfig({
       "**/dist/**",
       "**/build/**",
       "**/e2e/**",
+      "**/.playwright-browsers/**",
     ],
   },
   resolve: {
