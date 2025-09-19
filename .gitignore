@@ -51,3 +51,6 @@ next-env.d.ts
 
 # test outputs
 .out
+
+# playwright browsers cache
+.playwright-browsers

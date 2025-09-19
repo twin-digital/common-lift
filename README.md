@@ -20,11 +20,17 @@ This project uses:
 # Install dependencies
 pnpm install
 
+# For end-to-end testing, install Playwright browsers (one-time setup)
+pnpm run playwright:install
+
 # Start development server
 pnpm dev
 
-# Run tests
+# Run unit tests
 pnpm test
+
+# Run e2e tests
+pnpm test:e2e
 
 # Build for production
 pnpm build

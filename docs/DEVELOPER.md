@@ -42,6 +42,8 @@ pnpm test:e2e:ui          # Run e2e tests with UI mode
 pnpm test:e2e:debug       # Run e2e tests in debug mode
 ```
 
+> **Note**: End-to-end tests require Playwright browsers to be installed locally. Run `pnpm run playwright:install` once after cloning the repository. See [playwright-setup.md](./playwright-setup.md) for more details.
+
 ### Writing Tests
 
 **Unit/Component Tests (Vitest):**
