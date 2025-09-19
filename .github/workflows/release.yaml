@@ -15,6 +15,10 @@ env:
   HUSKY: 0
   TURBO_TELEMETRY_DISABLED: 1
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   publish:
     # only run when CI passed
@@ -40,5 +44,3 @@ jobs:
           title: 'chore: update versions'
           version: pnpm changeset:version
           publish: pnpm changeset:publish
-        env:
-          GITHUB_TOKEN: ${{ secrets.COCOBOT_GITHUB_TOKEN }}
