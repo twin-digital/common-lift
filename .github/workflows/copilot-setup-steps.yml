@@ -52,7 +52,7 @@ jobs:
       - name: Create .env file for DB access
         shell: bash
         run: |
-          echo -n "DATABASE_URL="postgresql://copilot:copilot@postgres:5432/copilot?schema=public" > .env
+          echo 'DATABASE_URL=postgresql://copilot:copilot@postgres:5432/copilot?schema=public' > .env
 
       - name: Apply DB migrations to development db
         shell: bash
