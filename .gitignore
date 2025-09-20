@@ -49,8 +49,15 @@ next-env.d.ts
 # Custom
 ########################################################################################################################
 
+# generated source files
+src/generated
+
 # test outputs
 .out
 
 # playwright browsers cache
 .playwright-browsers
+
+# local-only config
+.env
+.env.local

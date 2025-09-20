@@ -23,6 +23,22 @@ jobs:
       # this for you automatically after the steps complete.
       contents: read
 
+    # create a Postgres DB that copilot can use during development
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: copilot
+          POSTGRES_PASSWORD: copilot
+          POSTGRES_USER: copilot
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
     # You can define any steps you want, and they will run before the agent starts.
     # If you do not check out your code, Copilot will do this for you.
     steps:
@@ -32,3 +48,13 @@ jobs:
       # setup tools and install dependencies
       - name: Setup dependencies
         uses: ./.github/actions/setup
+
+      - name: Create .env file for DB access
+        shell: bash
+        run: |
+          echo 'DATABASE_URL=postgresql://copilot:copilot@postgres:5432/copilot?schema=public' > .env
+
+      - name: Apply DB migrations to development db
+        shell: bash
+        run: |
+          pnpm db:migrate

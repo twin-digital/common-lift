@@ -11,6 +11,7 @@ For more details, see the [full project overview](./docs/project-overview.md).
 This project uses:
 
 - **Next.js 15** with React 19 and TypeScript
+- **Prisma ORM** with PostgreSQL for database management
 - **TailwindCSS** for styling
 - **Vitest** for testing
 
@@ -19,6 +20,9 @@ This project uses:
 ```bash
 # Install dependencies
 pnpm install
+
+# Generate Prisma client (required for database operations)
+pnpm db:generate-client
 
 # For end-to-end testing, install Playwright browsers (one-time setup)
 pnpm run playwright:install
@@ -35,5 +39,7 @@ pnpm test:e2e
 # Build for production
 pnpm build
 ```
+
+**Note**: Database operations require a `DATABASE_URL` environment variable pointing to a PostgreSQL database.
 
 For detailed development information, see [docs/DEVELOPER.md](./docs/DEVELOPER.md).
