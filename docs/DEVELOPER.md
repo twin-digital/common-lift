@@ -90,7 +90,7 @@ pnpm db:reset
 ### Working with Prisma
 
 - **Schema**: Define your database schema in `prisma/schema.prisma`
-- **Client**: Generated Prisma client is available at `@/generated/prisma`
+- **Client**: Generated Prisma client is available at `@db`
 - **Migrations**: Use `prisma migrate dev` during development
 - **Type Safety**: Prisma provides full TypeScript types for database operations
 
