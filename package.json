@@ -44,6 +44,7 @@
     "@eslint/eslintrc": "^3",
     "@playwright/test": "^1.55.0",
     "@tailwindcss/postcss": "^4",
+    "@testcontainers/postgresql": "^11.6.0",
     "@testing-library/jest-dom": "^6.8.0",
     "@testing-library/react": "^16.3.0",
     "@types/node": "^20",
@@ -54,6 +55,7 @@
     "eslint-config-next": "15.5.3",
     "jsdom": "^27.0.0",
     "tailwindcss": "^4",
+    "testcontainers": "^11.6.0",
     "typescript": "^5",
     "vitest": "^3.2.4"
   }

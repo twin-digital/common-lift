@@ -216,6 +216,7 @@ Run these commands iteratively during development to catch issues early.
 ### Environment Details
 
 - Project's npm dependencies are pre-installed
+- Playwright browsers and system dependencies are pre-installed
 - Local development database is running
   - Host: "postgres", Port: "5432"
   - Connection string is in ".env", which sets DATABASE_URL for Prisma

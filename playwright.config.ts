@@ -10,6 +10,7 @@ export default defineConfig({
   testDir: "./test/e2e",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
+  globalTimeout: 3_600_000,
   retries: isCI ? 2 : 0,
   workers: isCI ? 1 : undefined,
 
@@ -28,14 +29,26 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'setup',
+      teardown: 'teardown',
+      testMatch: 'global/*.setup.ts',
+    },
+    {
+      name: 'teardown',
+      testMatch: 'global/*.teardown.ts',
+    },
+    {
+      dependencies: ['setup'],
       name: "chromium",
       use: { ...devices["Desktop Chrome"] },
     },
     {
+      dependencies: ['setup'],
       name: "firefox",
       use: { ...devices["Desktop Firefox"] },
     },
     {
+      dependencies: ['setup'],
       name: "webkit",
       use: { ...devices["Desktop Safari"] },
     },
