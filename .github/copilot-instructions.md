@@ -195,15 +195,6 @@ Run these commands iteratively during development to catch issues early.
 - **Build Tool**: Turbopack (Next.js' Rust-based bundler)
 - **TypeScript**: Strict mode enabled with modern ES2017 target
 
-### Non-Obvious Dependencies
-
-- **@prisma/client**: Prisma client for database operations
-- **@prisma/extension-accelerate**: Prisma performance extensions
-- **prisma**: Prisma CLI and schema management tools
-- **@tailwindcss/postcss**: Required for TailwindCSS 4 processing
-- **@eslint/eslintrc**: Compatibility layer for ESLint flat config
-- **Turbopack**: Bundled with Next.js, enables `--turbopack` flag
-
 ## CI/CD & Validation
 
 **Current State**: Automated CI/CD workflows with testing and release management
@@ -221,6 +212,14 @@ Run these commands iteratively during development to catch issues early.
 - **Manual Commands**: `pnpm changeset` to create changesets for new features/fixes*. It helps organizations ensure their members make consistent, distributed contact with decision-makers, turning individual calls and emails into visible, collective impact.
 
 ## Development Process
+
+### Environment Details
+
+- Project's npm dependencies are pre-installed
+- Local development database is running
+  - Host: "postgres", Port: "5432"
+  - Connection string is in ".env", which sets DATABASE_URL for Prisma
+  - All existing Prisma migrations have already been applied
 
 ### Available Scripts
 
