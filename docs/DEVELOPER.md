@@ -63,6 +63,39 @@ The test environment is configured with:
 - Supports Chrome, Firefox, and Safari
 - Start your dev server before running e2e tests: `pnpm dev`
 
+## Database & ORM
+
+This project uses [Prisma ORM](https://www.prisma.io/) for database management and type-safe database access.
+
+### Database Setup
+
+- **ORM**: Prisma ORM v6.16.2+
+- **Database**: PostgreSQL (configured in `prisma/schema.prisma`)
+- **Client Generation**: Custom output path at `src/generated/prisma`
+- **Connection**: Uses `DATABASE_URL` environment variable
+
+### Database Commands
+
+```bash
+# Generate Prisma client (run after schema changes)
+pnpm db:generate-client
+
+# Apply database migrations
+pnpm db:migrate
+
+# Reset database (caution: destroys data)
+pnpm db:reset
+```
+
+### Working with Prisma
+
+- **Schema**: Define your database schema in `prisma/schema.prisma`
+- **Client**: Generated Prisma client is available at `@/generated/prisma`
+- **Migrations**: Use `prisma migrate dev` during development
+- **Type Safety**: Prisma provides full TypeScript types for database operations
+
+The Prisma client is automatically generated during the build process and when running `pnpm db:generate-client`.
+
 ## Version Management & Releases
 
 This project uses [Changesets](https://github.com/changesets/changesets) for version management and automated releases.

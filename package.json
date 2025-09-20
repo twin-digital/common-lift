@@ -9,14 +9,18 @@
     "pnpm": ">=8"
   },
   "scripts": {
-    "build": "next build --turbopack",
+    "build": "prisma generate && next build --turbopack",
     "changeset:publish": "changeset publish",
     "changeset:status": "changeset status",
     "changeset:version": "changeset version",
     "changeset": "changeset",
-    "dev": "next dev --turbopack",
+    "db:migrate": "prisma migrate deploy",
+    "db:reset": "prisma migrate reset --force",
+    "db:generate-client": "prisma generate",
+    "dev": "prisma generate && next dev --turbopack",
     "lint": "eslint",
     "playwright:install": "playwright install --with-deps",
+    "postinstall": "prisma generate",
     "release": "pnpm build && changeset publish",
     "start": "next start",
     "test:e2e:debug": "playwright test --debug",
@@ -24,10 +28,14 @@
     "test:e2e": "playwright test",
     "test:run": "vitest run",
     "test:watch": "vitest --watch",
-    "test": "vitest run"
+    "test": "vitest run",
+    "vercel-build": "prisma generate && prisma migrate deploy && next build --turbopack"
   },
   "dependencies": {
+    "@prisma/client": "^6.16.2",
+    "@prisma/extension-accelerate": "^2.0.2",
     "next": "15.5.3",
+    "prisma": "^6.16.2",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },

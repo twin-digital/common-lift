@@ -21,6 +21,7 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
+      "@db/*": ["./src/generated/prisma/*"],
       "@test/*": ["./test/*"]
     }
   },

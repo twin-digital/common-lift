@@ -20,6 +20,7 @@
 - **Type**: Full-stack web application
 - **Languages**: TypeScript (95%), CSS (3%), JavaScript (2%)
 - **Framework**: Next.js 15.5.3 with React 19.1.0
+- **Database**: PostgreSQL with Prisma ORM v6.16.2+
 - **Target Runtime**: Node.js 22+ in browser and server environments
 
 ## Code Styling and Standards
@@ -46,6 +47,7 @@
    ```bash
    pnpm install
    ```
+
 2. **Development Server** (primary development workflow):
 
    ```bash
@@ -55,6 +57,7 @@
    - Uses Turbopack for fast compilation
    - Serves on http://localhost:3000
    - Hot reload enabled
+   - Automatically runs `prisma generate` before build
 
 3. **Linting** (run before commits):
 
@@ -65,7 +68,20 @@
    - Uses ESLint with Next.js TypeScript configuration
    - Zero tolerance - must pass with no errors
 
-4. **Testing** (recommended development workflow):
+4. **Database Operations** (as needed):
+
+   ```bash
+   # Generate Prisma client after schema changes
+   pnpm db:generate-client
+
+   # Apply database migrations (requires DATABASE_URL)
+   pnpm db:migrate
+
+   # Reset database (caution: destroys all data)
+   pnpm db:reset
+   ```
+
+5. **Testing** (recommended development workflow):
 
    ```bash
    # Unit/Component Tests
@@ -78,15 +94,16 @@
    - Uses Vitest with React Testing Library for unit/component tests
    - Uses Playwright for end-to-end testing
 
-5. **Production Build**:
+6. **Production Build**:
 
    ```bash
    pnpm build
    ```
 
    - Uses Turbopack for optimized builds
+   - Automatically runs `prisma generate` before build
 
-6. **Production Server**:
+7. **Production Server**:
    ```bash
    pnpm start
    ```
@@ -134,12 +151,16 @@ Run these commands iteratively during development to catch issues early.
 ├── .next/                  # Next.js build output (auto-generated)
 ├── docs/                   # Project documentation
 ├── node_modules/           # Dependencies (auto-generated)
+├── prisma/                 # Database schema and migrations
+│   └── schema.prisma       # Prisma schema definition
 ├── public/                 # Static assets (images, fonts, etc.)
 ├── src/                    # Application source code
-│   └── app/                # Next.js App Router directory
-│       ├── globals.css     # Global styles with TailwindCSS
-│       ├── layout.tsx      # Root layout component
-│       └── page.tsx        # Home page component
+│   ├── app/                # Next.js App Router directory
+│   │   ├── globals.css     # Global styles with TailwindCSS
+│   │   ├── layout.tsx      # Root layout component
+│   │   └── page.tsx        # Home page component
+│   └── generated/          # Auto-generated files
+│       └── prisma/         # Generated Prisma client
 ├── test/                   # Test utilities and configuration
 │   ├── common/             # Shared test utilities used by all test types
 │   ├── e2e/                # End-to-end tests (Playwright)
@@ -156,8 +177,10 @@ Run these commands iteratively during development to catch issues early.
 
 - **package.json**: Dependencies and scripts
   - React 19.1.0, Next.js 15.5.3, TypeScript 5+
+  - Prisma ORM 6.16.2+ with PostgreSQL support
   - TailwindCSS 4 for styling
   - ESLint for code quality
+- **prisma/schema.prisma**: Database schema and Prisma configuration
 - **tsconfig.json**: TypeScript with Next.js plugin, path aliases (`@/*`)
 - **eslint.config.mjs**: Next.js core web vitals + TypeScript rules
 - **postcss.config.mjs**: TailwindCSS PostCSS integration
@@ -166,6 +189,7 @@ Run these commands iteratively during development to catch issues early.
 ### Architecture
 
 - **Framework**: Next.js 15 with App Router (src/app/)
+- **Database**: PostgreSQL with Prisma ORM for type-safe database access
 - **Styling**: TailwindCSS 4 with custom theme variables
 - **Fonts**: Geist Sans & Mono from Google Fonts via next/font
 - **Build Tool**: Turbopack (Next.js' Rust-based bundler)
@@ -173,6 +197,9 @@ Run these commands iteratively during development to catch issues early.
 
 ### Non-Obvious Dependencies
 
+- **@prisma/client**: Prisma client for database operations
+- **@prisma/extension-accelerate**: Prisma performance extensions
+- **prisma**: Prisma CLI and schema management tools
 - **@tailwindcss/postcss**: Required for TailwindCSS 4 processing
 - **@eslint/eslintrc**: Compatibility layer for ESLint flat config
 - **Turbopack**: Bundled with Next.js, enables `--turbopack` flag
@@ -202,6 +229,11 @@ pnpm dev          # Development server with Turbopack
 pnpm build        # Production build with Turbopack
 pnpm start        # Production server
 pnpm lint         # ESLint validation
+
+# Database Operations (Prisma)
+pnpm db:generate-client  # Generate Prisma client
+pnpm db:migrate          # Apply database migrations
+pnpm db:reset            # Reset database (destroys data)
 
 # Unit/Component Testing
 pnpm test         # Run unit tests once
